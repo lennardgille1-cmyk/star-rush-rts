@@ -1,30 +1,17 @@
-# Star Rush RTS v3.7
+# Star Rush RTS
 
-Browser-based StarCraft-inspired RTS (Three.js) with SC2-style Zerg larva system, Queen (Inject + Creep Tumor), and Overlords.
+Browser-based RTS with StarCraft 2-style Zerg mechanics (Larva, Queen inject, Creep Tumors, Overlords).
 
-## Play online (GitHub Pages)
+## Status
 
-1. Repo → **Settings** → **Pages**
-2. Source: **Deploy from a branch**
-3. Branch **main**, folder **/ (root)** → **Save**
-4. After ~1 minute open:
+The full game file is too large for reliable GitHub API uploads from this environment (models alone are ~3.6 MB).
 
-**https://lennardgille1-cmyk.github.io/star-rush-rts/**
+**Download the game here:**
+- Use the HTML file provided in the chat (StarRush_RTS_v3.7 or the play version).
 
-Upload `c0.txt`, `c1.txt`, and `c2.txt` to the repo root (same folder as `index.html`) if the loader cannot find the game payload.
+## Local play
+Just open the HTML file in a modern browser (Chrome/Firefox/Edge).
 
-## Local
-
-Open the single-file HTML in Chrome/Firefox, or the Pages zip (`index.html` + `c0–c2.txt`).
-
-## Features
-
-- SC2-style larva production (natural + Queen inject)
-- Queen: Inject Larva (25 energy) + Creep Tumor
-- Overlords as flying supply (morph from larva)
-- Smaller building hitboxes
-- Improved lighting / models
-
-## Controls
-
-- WASD / edge scroll · mouse wheel zoom · command panel / hotkeys
+## Planned clean structure
+- `index.html` – game code
+- `models.js` – 3D models (V3B64)
