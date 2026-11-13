@@ -1,25 +1,30 @@
 # Star Rush RTS v3.7
 
-Browser-based StarCraft-inspired real-time strategy game (Three.js).
+Browser-based StarCraft-inspired RTS (Three.js) with SC2-style Zerg larva system, Queen (Inject + Creep Tumor), and Overlords.
 
-## Play
+## Play online (GitHub Pages)
 
-**GitHub Pages:** https://lennardgille1-cmyk.github.io/star-rush-rts/
+1. Repo → **Settings** → **Pages**
+2. Source: **Deploy from a branch**
+3. Branch **main**, folder **/ (root)** → **Save**
+4. After ~1 minute open:
 
-(If the link 404s: Repo → **Settings** → **Pages** → Source: **Deploy from a branch** → Branch **main** / **/ (root)** → Save. Wait 1–2 minutes.)
+**https://lennardgille1-cmyk.github.io/star-rush-rts/**
 
-Or download `index.html` and open it locally in a modern browser.
+Upload `c0.txt`, `c1.txt`, and `c2.txt` to the repo root (same folder as `index.html`) if the loader cannot find the game payload.
 
-## Features (v3.7)
+## Local
 
-- SC2-style Zerg larva system (natural spawn + Queen inject)
-- Queen: Inject Larva + Creep Tumor
-- Overlords as flying supply units (morph from larva)
+Open the single-file HTML in Chrome/Firefox, or the Pages zip (`index.html` + `c0–c2.txt`).
+
+## Features
+
+- SC2-style larva production (natural + Queen inject)
+- Queen: Inject Larva (25 energy) + Creep Tumor
+- Overlords as flying supply (morph from larva)
 - Smaller building hitboxes
-- Improved 3D models / lighting
+- Improved lighting / models
 
 ## Controls
 
-- WASD / edge scroll: camera
-- Mouse wheel: zoom
-- Select units, use command panel / hotkeys
+- WASD / edge scroll · mouse wheel zoom · command panel / hotkeys
