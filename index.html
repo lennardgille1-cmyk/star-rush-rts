@@ -1,28 +1,23 @@
 <!DOCTYPE html>
 <html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Star Rush RTS v3.7</title>
-<style>body{margin:0;background:#0a0e14;color:#9cf;font-family:system-ui;display:grid;place-items:center;height:100vh;text-align:center;padding:16px}</style>
-</head><body><p id="s">Loading Star Rush RTS...</p>
+<style>body{margin:0;background:#0a0e14;color:#9cf;font-family:system-ui;display:grid;place-items:center;height:100vh}</style>
+</head><body><p id="s">Loading...</p>
 <script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
 <script>
 (async function(){
-  const n=8;
-  const s=document.getElementById('s');
+  const n=20; const s=document.getElementById('s');
   try{
     let b64='';
     for(let i=0;i<n;i++){
-      s.textContent='Loading '+(i+1)+'/'+n+'...';
+      s.textContent='Loading '+(i+1)+'/'+n;
       const r=await fetch('c'+i+'.txt');
-      if(!r.ok) throw new Error('Missing c'+i+'.txt (HTTP '+r.status+'). Upload the pages zip files to the repo root.');
+      if(!r.ok) throw new Error('missing c'+i+'.txt');
       b64+=(await r.text()).replace(/\s+/g,'');
     }
-    s.textContent='Unpacking...';
     const bin=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));
     const html=pako.ungzip(bin,{to:'string'});
     document.open();document.write(html);document.close();
-  }catch(e){
-    s.innerHTML='Error: '+e.message+'<br><br><small>Fix: download star-rush-pages-fixed.zip, extract, upload c0.txt–c7.txt into the repo root next to index.html</small>';
-    console.error(e);
-  }
+  }catch(e){s.textContent='Error: '+e.message;console.error(e);}
 })();
 </script></body></html>
