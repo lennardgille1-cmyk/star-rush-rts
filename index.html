@@ -4,25 +4,33 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Star Rush RTS v3.7</title>
-<style>body{margin:0;background:#0a0e14;color:#9cf;font-family:system-ui;display:grid;place-items:center;height:100vh}#s{opacity:.7}</style>
+<style>body{margin:0;background:#0a0e14;color:#9cf;font-family:system-ui;display:grid;place-items:center;height:100vh}</style>
 </head>
 <body>
 <p id="s">Lade Star Rush RTS…</p>
-<script src="p0.js"></script>
-<script src="p1.js"></script>
-<script src="p2.js"></script>
-<script src="p3.js"></script>
-<script src="p4.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
 <script>
-(function(){
-  var n=5;
-  var parts=window.__SR_PARTS||[];
-  if(parts.length<n){document.getElementById('s').textContent='Ladefehler – bitte Seite neu laden.';return;}
-  var html='';
-  for(var i=0;i<n;i++) html+=parts[i];
-  document.open();
-  document.write(html);
-  document.close();
+(async function(){
+  const n = 3;
+  const s = document.getElementById('s');
+  try {
+    let b64 = '';
+    for (let i = 0; i < n; i++) {
+      s.textContent = 'Lade Teil ' + (i+1) + '/' + n + '…';
+      const t = await (await fetch('c' + i + '.txt')).text();
+      b64 += t.replace(/\s+/g, '');
+    }
+    s.textContent = 'Entpacke…';
+    const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+    const html = pako.ungzip(bin, { to: 'string' });
+    document.open();
+    document.write(html);
+    document.close();
+  } catch (e) {
+    s.textContent = 'Fehler: ' + e.message;
+    console.error(e);
+  }
 })();
 </script>
-</body></html>
+</body>
+</html>
